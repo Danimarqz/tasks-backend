@@ -1,0 +1,18 @@
+{
+  "name": "tasks-backend",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy --minify",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.46.1",
+    "crypto-ts": "^1.0.2",
+    "hono": "^4.6.9"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241106.0",
+    "supabase": "^1.219.2",
+    "wrangler": "^3.83.0"
+  }
+}
