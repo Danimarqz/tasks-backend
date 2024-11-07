@@ -1,7 +1,7 @@
 import * as crypto from 'crypto-ts';
 import { CryptoType } from '../types/cryptoType';
 
-export function decrypt(key: string, iv: string, text: string): CryptoType {
+export function decrypt(key: string, iv: string, text: string) {
     // Decodifica el IV y el texto encriptado desde Base64
     const ivBytes = crypto.enc.Base64.parse(iv);
     const encryptedBytes = crypto.enc.Base64.parse(text);
@@ -14,4 +14,7 @@ export function decrypt(key: string, iv: string, text: string): CryptoType {
     );
 
     return JSON.parse(decrypted.toString(crypto.enc.Utf8));
+}
+export function decryptDB( key: string, text: string): string {
+	return crypto.AES.decrypt(text.toString(), key).toString(crypto.enc.Utf8)
 }
