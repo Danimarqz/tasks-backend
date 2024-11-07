@@ -14,9 +14,9 @@ const userAPI = (app: Hono, env: Env) => {
 	app.post('/auth', async (c) => {
 		if (!checkOrigin(c, env)) return errorCors(c);
 
-		const { encryptedDataString } = await c.req.json()
+		const { iv, encryptedDataString } = await c.req.json()
 
-		const { data }: CryptoType = decrypt(CRYPTO_KEY, encryptedDataString)
+		const { data }: CryptoType = decrypt(CRYPTO_KEY, iv, encryptedDataString)
 
 		if (data) {
 			const { username, password }: newUser = JSON.parse(data)
